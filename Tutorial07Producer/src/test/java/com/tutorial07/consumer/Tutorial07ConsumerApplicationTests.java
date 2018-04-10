@@ -1,4 +1,4 @@
-package com.tutorial07.producer;
+package com.tutorial07.consumer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Tutorial07ProducerApplicationTests {
+public class Tutorial07ConsumerApplicationTests {
 
 	@Test
 	public void contextLoads() {
