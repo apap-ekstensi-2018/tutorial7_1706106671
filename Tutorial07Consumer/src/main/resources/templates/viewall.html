@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:replace="fragments/fragment :: title">View All Students</title>
+        
+        <link rel="stylesheet" type="text/css" href="/datatables/datatables.css">
+        <script type="text/javascript" src="/js/jquery/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="/dataTables/datatables.js"></script>
+        
+    </head>
+    <body>
+        <h1>All Students</h1>
+        <table id="allStudents" class="display" style="width:100%">
+         <thead>
+            <tr>
+                <th>No.</th>
+                <th>NPM</th>
+                <th>Name</th>
+                <th>GPA</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student,iterationStatus: ${students}" th:class="${iterationStatus.even} ? 'even' : 'odd'">
+                <td th:text="${iterationStatus.count}">Tiger Nixon</td>
+                <td th:text="${student.npm}">System Architect</td>
+                <td th:text="${student.name}">Edinburgh</td>
+                <td th:text="${student.gpa}">61</td>
+                <td th:text="${student.gpa>=3.49} ? 'Cum Laude!' : 'Sangat Memuaskan!'"></td>
+                <td><a th:href="'/student/update/' + ${student.npm}">Update</a>&nbsp<a th:href="'/student/delete/' + ${student.npm}">Delete</a></td>
+                
+            </tr>
+       	</tbody>
+        </table>
+	   <!--  	<div th:each="student,iterationStatus: ${students}" th:class="${iterationStatus.even} ? 'even' : 'odd'">
+	    		<h3 th:text="'No. ' + ${iterationStatus.count}">No. 1</h3>
+			<h3 th:text="'NPM = ' + ${student.npm}">Student NPM</h3>
+			<h3 th:text="'Name = ' + ${student.name}">Student Name</h3>
+			<h3 th:text="'GPA = ' + ${student.gpa}">Student GPA</h3>
+			<a th:href="'/student/update/' + ${student.npm}">Update Data</a><br/>
+			<a th:href="'/student/delete/' + ${student.npm}">Delete Data</a><br/>
+			<h3 th:text="${student.gpa>=3.49} ? 'Cum Laude!' : 'Sangat Memuaskan!'">Cum Laude!</h3>
+			<hr/>
+		</div> -->
+		<script>
+		$(document).ready(function() {
+		    $('#allStudents').DataTable();
+		} );
+		</script>
+    </body>
+</html>
